@@ -1,0 +1,66 @@
+<h2>Add User</h2>
+
+<?php 
+
+echo $this->tag->form('adduser/register') ?>
+
+	<p>
+		<label for="name">First Name</label>
+		<?php echo $this->tag->textField("firstname") ?>
+	</p>
+
+    <p>
+		<label for="name">Last Name</label>
+		<?php echo $this->tag->textField("lastname") ?>
+	</p>
+
+	<p>
+		<label for="name">E-Mail</label>
+		<?php echo $this->tag->emailField("email") ?>
+	</p>
+
+    <p><label>Gender:</label><br>
+        <?php echo $this->tag->radioField(
+            [
+                "gender",
+                "value" => "M",
+            ]
+        ); ?><label>Male</label>
+        <?php echo $this->tag->radioField(
+        [
+            "gender",
+            "value" => "F",
+        ]
+        ); ?><label>Female</label>
+    </p>
+
+    <p>
+        <label>Education:</label><br>
+        <?php echo $this->tag->selectStatic(
+        [
+            "education",
+            [
+                "BSC" => "BSC",
+                "BCOM" => "BCOM",
+                "BA" => "BA",
+            ]
+        ]
+        ); ?>
+    </p>
+
+    <p>
+        <label>Skills:</label><br>
+        <?php echo $this->tag->textArea(
+        [
+            "skills",
+            "cols" => 10,
+            "rows" => 10,
+        ]
+        ); ?>
+    </p>
+    
+	<p>
+		<?php echo $this->tag->submitButton("Submit") ?>
+	</p>
+
+</form>

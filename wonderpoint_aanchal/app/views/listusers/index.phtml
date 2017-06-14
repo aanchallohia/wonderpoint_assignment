@@ -1,0 +1,46 @@
+<h2>List Users</h2>
+
+<?php 
+use Phalcon\Db\Adapter\Pdo\Mysql;
+
+$config = [
+    "host"     => "localhost",
+    "dbname"   => "wonderpoint_aanchal",
+    "username" => "root",
+    "password" => "",
+];
+
+$connection = new Mysql($config);
+
+      $result = $connection->query(
+    "SELECT * FROM users"
+); ?>
+      <table border="1" style= "background-color: #FFFFA5;" >
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Education</th>
+          <th>Skills</ths>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          while( $row =  $result->fetchArray()){
+            echo
+            "<tr>
+              <td>{$row['firstname']}</td>
+              <td>{$row['lastname']}</td>
+              <td>{$row['email']}</td>
+              <td>{$row['gender']}</td>
+              <td>{$row['education']}</td>
+              <td>{$row['skills']}</td> 
+            </tr>\n";
+          }
+        ?>
+      </tbody>
+    </table>
+    <br><br>
+<?php echo $this->tag->linkTo("index", "Home");
